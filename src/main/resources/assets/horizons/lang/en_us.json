@@ -1,0 +1,15 @@
+{
+  "creativetab.horizons.main_tab": "HORIZONS: Items",
+  "item.horizons.rock.loose_stone_rock": "Loose Stone Rock",
+  "item.horizons.tools.wood.pointy_stick": "Pointy Stick",
+  "item.horizons.tools.rock.sharp_stone": "Sharp Stone",
+  "item.horizons.tools.flint.sharp_flint": "Sharp Flint",
+  "item.horizons.tools.flint.flint_axe_head": "Flint Axe Head",
+  "item.horizons.tools.flint.flint_axe": "Flint Axe",
+  "item.horizons.tools.flint.flint_javelin_head": "Flint Javelin Head",
+  "item.horizons.tools.flint.flint_javelin": "Flint Javelin",
+  "item.horizons.plants.flax.flax": "Flax",
+  "item.horizons.plants.flax.bunch_flax": "Bunch Flax",
+  "item.horizons.plants.flax.dried_bunch_flax": "Dried Bunch Flax",
+  "item.horizons.plants.flax.flax_string": "Flax String"
+}
