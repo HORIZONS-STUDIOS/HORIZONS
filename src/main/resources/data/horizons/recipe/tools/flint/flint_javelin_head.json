@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "#horizons:sharp_tools",
+    "X": "minecraft:flint"
+  },
+  "pattern": [
+    "XC",
+    "X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "horizons:tools/flint/flint_javelin_head"
+  }
+}

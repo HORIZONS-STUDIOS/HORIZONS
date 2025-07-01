@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "horizons:plants/flax/flax_string",
+    "V": "minecraft:stick",
+    "X": "horizons:tools/flint/flint_axe_head"
+  },
+  "pattern": [
+    "XC",
+    " V"
+  ],
+  "result": {
+    "count": 1,
+    "id": "horizons:tools/flint/flint_axe"
+  }
+}

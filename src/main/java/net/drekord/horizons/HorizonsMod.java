@@ -1,5 +1,8 @@
 package net.drekord.horizons;
 
+import net.drekord.horizons.common.blocks.HorizonsBlocks;
+import net.drekord.horizons.common.items.HorizonsItems;
+import net.drekord.horizons.common.tab.HorizonsCreativeTabs;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -11,6 +14,9 @@ public class HorizonsMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		HorizonsItems.registerModItems();
+		HorizonsBlocks.registerModBlocks();
+		HorizonsCreativeTabs.registerItemGroups();
 		LOGGER.info("Hello Fabric world!");
 	}
 }
