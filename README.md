@@ -1,2 +1,1 @@
-# HORIZONS
-New Realistic mod for Minecraft
+![Horizons Splash Image](./img/splash-1.png)
