@@ -3,6 +3,7 @@ package net.drekord.horizons;
 import net.drekord.horizons.common.blocks.HorizonsBlocks;
 import net.drekord.horizons.common.items.HorizonsItems;
 import net.drekord.horizons.common.tab.HorizonsCreativeTabs;
+import net.drekord.horizons.util.HorizonsTags;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
