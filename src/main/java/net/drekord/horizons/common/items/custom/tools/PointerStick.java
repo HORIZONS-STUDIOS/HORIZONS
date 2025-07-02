@@ -8,11 +8,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class PointerStick extends Item {
@@ -20,15 +17,24 @@ public class PointerStick extends Item {
         super(settings);
     }
 
+    @Override
+    public float getMiningSpeed(ItemStack stack, BlockState state) {
+        return state.isIn(HorizonsTags.Blocks.POINTER_STICK_MINEABLE)? 1.0f : 0.01F;
+    }
 
+    @Override
+    public boolean canMine(ItemStack stack, BlockState state, World world, BlockPos pos, LivingEntity user) {
+        return state.isIn(HorizonsTags.Blocks.POINTER_STICK_MINEABLE);
+    }
 
     @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         if (!world.isClient()) {
             if (state.isIn(HorizonsTags.Blocks.POINTER_STICK_MINEABLE)) {
-                ServerWorld serverWorld = (ServerWorld) world;
+                //ServerWorld serverWorld = (ServerWorld) world;
                 world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
-                Block.dropStack(world, pos, new ItemStack(HorizonsItems.LOOSE_STONE_ROCK.asItem()));
+                Random rand = world.getRandom();
+                Block.dropStack(world, pos, new ItemStack(HorizonsItems.LOOSE_STONE_ROCK.asItem(), rand.nextInt(2) + 1));
                 stack.damage(1, miner, EquipmentSlot.MAINHAND);
             }
         }
