@@ -3,15 +3,11 @@ package net.drekord.horizons.common.items;
 import net.drekord.horizons.HorizonsMod;
 import net.drekord.horizons.common.items.custom.tools.PointerStick;
 import net.drekord.horizons.common.items.custom.tools.SharpTools;
-import net.drekord.horizons.util.HorizonsTags;
-import net.drekord.horizons.util.HorizonsToolMaterial;
-import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
@@ -19,7 +15,6 @@ import java.util.function.Function;
 public class HorizonsItems {
     public static final Item POINTY_STICK = registerItem("tools/wood/pointy_stick",
             settings -> new PointerStick(settings.maxDamage(4)));
-            //settings -> new PointerStick(settings.tool(HorizonsToolMaterial.POINTER_STICK_ITEMS, HorizonsTags.Blocks.POINTER_STICK_MINEABLE, 0.0f, 0.0f, 0.0f)));
     public static final Item LOOSE_STONE_ROCK = registerItem("rock/loose_stone_rock", settings -> new Item(settings.fireproof()));
     public static final Item SHARP_STONE = registerItem("tools/rock/sharp_stone", settings -> new SharpTools(settings.maxDamage(12).fireproof()));
     public static final Item SHARP_FLINT = registerItem("tools/flint/sharp_flint", settings -> new SharpTools(settings.maxDamage(16).fireproof()));
