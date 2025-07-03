@@ -9,8 +9,10 @@ import net.minecraft.registry.tag.TagKey;
 
 public class HorizonsTags {
     public static class Blocks {
+        public static final TagKey<Block> HAND_MINEABLE = createTag("player/hand_mineable");
         public static final TagKey<Block> NEEDS_POINTER_STICK = createTag("needs_pointer_stick");
         public static final TagKey<Block> POINTER_STICK_MINEABLE = createTag("pointer_stick_mineable");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(HorizonsMod.MOD_ID, name));
         }
