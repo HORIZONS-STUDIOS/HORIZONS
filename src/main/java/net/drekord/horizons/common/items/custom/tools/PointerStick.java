@@ -17,20 +17,15 @@ import java.util.function.Supplier;
 
 public class PointerStick extends Item {
     private static final Supplier<Map<Block, Block>> BLOCK_TO_CRACKED = () -> Map.of(
-            Blocks.STONE, Blocks.COBBLESTONE,
-            Blocks.ANDESITE, Blocks.POLISHED_ANDESITE,
-            Blocks.GRANITE, Blocks.POLISHED_GRANITE,
-            Blocks.DIORITE, Blocks.POLISHED_DIORITE,
-            Blocks.GRAVEL, Blocks.SAND,
-            Blocks.COARSE_DIRT, Blocks.DIRT
+            Blocks.STONE, Blocks.COBBLESTONE, Blocks.ANDESITE, Blocks.POLISHED_ANDESITE,
+            Blocks.GRANITE, Blocks.POLISHED_GRANITE, Blocks.DIORITE, Blocks.POLISHED_DIORITE,
+            Blocks.GRAVEL, Blocks.SAND, Blocks.COARSE_DIRT, Blocks.DIRT
     );
     private static final Supplier<Map<Block, Item>> BLOCK_TO_DROP = () -> Map.of(
-            Blocks.STONE, Items.FLINT,
-            Blocks.ANDESITE, HorizonsItems.LOOSE_STONE_ROCK,
-            Blocks.GRANITE, HorizonsItems.LOOSE_STONE_ROCK,
-            Blocks.DIORITE, HorizonsItems.LOOSE_STONE_ROCK,
-            Blocks.GRAVEL, Items.FLINT,
-            Blocks.COARSE_DIRT, HorizonsItems.LOOSE_STONE_ROCK
+            Blocks.STONE, HorizonsItems.LOOSE_STONE_ROCK, Blocks.ANDESITE, HorizonsItems.LOOSE_STONE_ROCK,
+            Blocks.GRANITE, HorizonsItems.LOOSE_STONE_ROCK, Blocks.DIORITE, HorizonsItems.LOOSE_STONE_ROCK,
+            Blocks.COARSE_DIRT, HorizonsItems.LOOSE_STONE_ROCK, Blocks.GRAVEL, Items.FLINT
+
     );
 
     public PointerStick(Settings settings) {

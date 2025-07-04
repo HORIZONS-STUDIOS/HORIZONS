@@ -1,11 +1,11 @@
 package net.drekord.horizons.mixin;
 
+import net.drekord.horizons.common.items.HorizonsItems;
 import net.drekord.horizons.util.HorizonsTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -24,21 +24,31 @@ public abstract class PlayerInteraction {
     private void onCanBreakBlock(BlockState state, CallbackInfoReturnable<Float> cir) {
         PlayerEntity player = (PlayerEntity)(Object)this;
         ItemStack stack = player.getMainHandStack();
-        if (state.isIn(HorizonsTags.Blocks.HAND_MINEABLE)) {
-            return;
-        }
-        if (stack.isEmpty() || stack.getItem() == Items.AIR || !isTool(stack)) {
+
+        if (stack.isEmpty()) {
             long currentTime = System.currentTimeMillis();
             if (currentTime - lastDamageTime >= DAMAGE_COOLDOWN) {
-                if(player.getWorld() instanceof ServerWorld serverWorld) {
+                if (player.getWorld() instanceof ServerWorld serverWorld) {
                     serverWorld.getServer().execute(() -> {
                         player.damage(serverWorld, player.getDamageSources().generic(), 2.0F);
                     });
                 }
-                /* Deprecated */
-                //player.serverDamage(player.getDamageSources().generic(), 2.0F);
                 lastDamageTime = currentTime;
             }
+            if (state.isIn(HorizonsTags.Blocks.HAND_MINEABLE)) { return; }
+            cir.setReturnValue(0.0F);
+            cir.cancel();
+        } else {
+            if (!(stack.getItem() == Items.AIR) && !isTool(stack)) {
+                if (state.isIn(HorizonsTags.Blocks.HAND_MINEABLE)) { return; }
+                cir.setReturnValue(0.0F);
+                cir.cancel();
+            }
+        }
+
+        if ((stack.getItem() == HorizonsItems.POINTY_STICK.asItem() && !state.isIn(HorizonsTags.Blocks.POINTER_STICK_MINEABLE)) ||
+                (stack.getItem() == HorizonsItems.SHARP_STONE.asItem() && !state.isIn(HorizonsTags.Blocks.SHARP_STONE_MINEABLE)) ||
+                (stack.getItem() == HorizonsItems.SHARP_FLINT.asItem() && !state.isIn(HorizonsTags.Blocks.SHARP_STONE_MINEABLE))) {
             cir.setReturnValue(0.0F);
             cir.cancel();
         }
@@ -46,7 +56,7 @@ public abstract class PlayerInteraction {
 
     @Unique
     private boolean isTool(ItemStack stack) {
-        if (stack.isIn(ItemTags.PICKAXES) || stack.isIn(ItemTags.AXES) || stack.isIn(ItemTags.SHOVELS) || stack.isIn(ItemTags.HOES) || stack.isIn(ItemTags.SWORDS) || stack.isOf(Items.SHEARS)) {
+        if (stack.isIn(HorizonsTags.Items.TOOLS)) {
             return true;
         }
         return false;
